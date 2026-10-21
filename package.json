@@ -1,5 +1,5 @@
 {
-  "name": "ifs24010-pabwe2026-sk-p6-sveltekit",
+  "name": "ifs24037-pabwe2026-sk-p6-sveltekit",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-bun": "^1.0.0",
+    "@sveltejs/adapter-netlify": "latest",
     "@sveltejs/adapter-vercel": "^7.0.1",
     "@sveltejs/kit": "^3.0.1",
     "@sveltejs/vite-plugin-svelte": "^7.3.1",

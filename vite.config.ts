@@ -1,5 +1,6 @@
 import { sveltekit } from "@sveltejs/kit/vite";
 import bunAdapter from "@sveltejs/adapter-bun";
+import netlifyAdapter from "@sveltejs/adapter-netlify";
 import vercelAdapter from "@sveltejs/adapter-vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { svelteTesting } from "@testing-library/svelte/vite";
@@ -14,14 +15,16 @@ export default defineConfig(({ mode }) => {
     plugins: [
       sveltekit({
         inlineStyleThreshold: 25_000,
-        adapter: process.env.VERCEL
-          ? vercelAdapter({ runtime: "nodejs24.x" })
-          : bunAdapter({
-              envPrefix: "APP_",
-              serverOptions: {
-                port: port,
-              },
-            }),
+        adapter: process.env.NETLIFY
+          ? netlifyAdapter()
+          : process.env.VERCEL
+            ? vercelAdapter({ runtime: "nodejs24.x" })
+            : bunAdapter({
+                envPrefix: "APP_",
+                serverOptions: {
+                  port: port,
+                },
+              }),
       }),
       tailwindcss(),
       svelteTesting(),
